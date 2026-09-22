@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+.storybook-out
+storybook-static
+npm-debug.log*
+.DS_Store
+.env*

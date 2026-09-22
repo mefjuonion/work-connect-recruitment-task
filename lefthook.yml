@@ -1,0 +1,10 @@
+pre-commit:
+  commands:
+    lint:
+      glob: '*.{js,jsx,ts,tsx,mjs,cjs}'
+      run: npx eslint {staged_files}
+
+pre-push:
+  commands:
+    trivy:
+      run: trivy fs --scanners vuln,secret --exit-code 1 .

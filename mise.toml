@@ -1,0 +1,35 @@
+[tools]
+node = "22"
+trivy = "latest"
+
+[tasks.install]
+description = "Install dependencies"
+run = "npm ci"
+
+[tasks.dev]
+description = "Build and start the app container"
+run = "docker compose up --build --force-recreate --remove-orphans"
+
+[tasks.build]
+description = "Build the Next.js app for production"
+run = "npm run build"
+
+[tasks.start]
+description = "Start the production Next.js server"
+run = "npm run start"
+
+[tasks.lint]
+description = "Lint the codebase"
+run = "npm run lint"
+
+[tasks."docker:up"]
+description = "Build and start the app container (linux/arm64)"
+run = "docker compose up --build --force-recreate --remove-orphans"
+
+[tasks."docker:down"]
+description = "Stop and remove the app container"
+run = "docker compose down"
+
+[tasks.trivy]
+description = "Scan the filesystem for vulnerable dependencies and leaked secrets"
+run = "trivy fs --scanners vuln,secret --exit-code 1 ."
