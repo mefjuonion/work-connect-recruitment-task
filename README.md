@@ -10,12 +10,27 @@ mise install
 
 All commands below are also available as mise tasks, e.g. `mise run dev`, `mise run docker:up`. Run `mise tasks` to see the full list.
 
+### Git hooks
+
+Git hooks are managed via [lefthook](https://lefthook.dev) (see `lefthook.yml`):
+
+- `pre-commit` runs ESLint on staged files.
+- `pre-push` runs [Trivy](https://trivy.dev) to scan the repo for vulnerabilities and leaked secrets.
+
+Trivy must be installed locally for `pre-push` to work:
+
+```bash
+brew install trivy
+```
+
+Without it, `git push` will fail with `trivy: command not found`.
+
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
+mise run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -38,7 +53,7 @@ A simplified [feature-sliced design](https://feature-sliced.design):
 The Next.js app runs in Docker, built for `linux/arm64`:
 
 ```bash
-docker compose up --build
+mise run docker:up
 ```
 
 - App: [http://localhost:3000](http://localhost:3000)
