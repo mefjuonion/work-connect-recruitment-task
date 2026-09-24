@@ -25,7 +25,7 @@ const ProductsFeed = () => {
       <header className="flex items-center justify-between gap-4 pb-6">
         <div>
           <h1 className="text-xl leading-normal font-semibold">{COPY.title}</h1>
-          <p className="text-sm leading-normal text-muted-foreground">{COPY.subtitle}</p>
+          <p className="text-sm leading-normal text-muted-foreground">{products.length}{COPY.subtitle}</p>
         </div>
 
         <AddProductDialog />

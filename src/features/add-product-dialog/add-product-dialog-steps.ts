@@ -43,7 +43,6 @@ export const addProductFormSchema = z.object({
 });
 
 export type AddProductFormValues = z.input<typeof addProductFormSchema>;
-export type AddProductFormResult = z.output<typeof addProductFormSchema>;
 
 export const ADD_PRODUCT_FORM_STEPS: z.ZodType<unknown, AddProductFormValues>[] = [
   z.object({ ...skip, baseInfo: productBaseInfoSchema }),

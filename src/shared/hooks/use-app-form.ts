@@ -12,9 +12,7 @@ import {
 
 import { fieldContext, formContext } from '../lib/form-context';
 
-export { useFieldContext, useFormContext } from '../lib/form-context';
-
-export const { useAppForm, withForm, withFieldGroup } = createFormHook({
+export const { useAppForm, withFieldGroup } = createFormHook({
   fieldContext,
   formContext,
   fieldComponents: {

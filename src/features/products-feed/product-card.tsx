@@ -1,3 +1,4 @@
+import COPY from '@/shared/copy/product-base-info';
 import type { Product } from '@/shared/stores/products-store';
 import {
   Card,
@@ -26,15 +27,15 @@ export function ProductCard({ product }: ProductCardProps) {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <dl className="grid grid-cols-3 gap-4 rounded-lg bg-muted/50 p-4">
+        <dl className="grid grid-cols-3 gap-4 rounded-lg bg-accent p-4">
           <div>
             <dt className="text-sm text-muted-foreground">Kategoria</dt>
-            <dd className="mt-1">{product.category}</dd>
+            <dd className="mt-1">{COPY.options.category[product.category]}</dd>
           </div>
           <div>
             <dt className="text-sm text-muted-foreground">Cena Brutto</dt>
             <dd className="mt-1 font-semibold whitespace-nowrap">
-              {formatPrice(product.grossPrice)}
+              {formatPrice(product.grossPrice, product.currency)}
             </dd>
           </div>
           <div>

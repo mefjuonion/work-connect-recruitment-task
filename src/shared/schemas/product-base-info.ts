@@ -28,7 +28,6 @@ export const productBaseInfoSchema = z.object({
 });
 
 export type ProductBaseInfoFormValues = z.input<typeof productBaseInfoSchema>;
-export type ProductBaseInfo = z.output<typeof productBaseInfoSchema>;
 
 export const productBaseInfoDefaultValues: ProductBaseInfoFormValues = {
   name: '',

@@ -1,7 +1,6 @@
-'use client';
-
 import { ComponentProps } from 'react';
 
+import COPY from '@/shared/copy/product-base-info';
 import { type ColumnDef, useTable } from '@/shared/hooks/use-table';
 import { type Product } from '@/shared/stores/products-store';
 import { DataTable } from '@/shared/ui/data-table';
@@ -25,13 +24,13 @@ const columns: ColumnDef<Product>[] = [
   {
     id: 'category',
     header: 'Kategoria',
-    cell: (product) => product.category,
+    cell: (product) => COPY.options.category[product.category],
     cellClassName: 'text-muted-foreground',
   },
   {
     id: 'grossPrice',
     header: 'Cena Brutto',
-    cell: (product) => formatPrice(product.grossPrice),
+    cell: (product) => formatPrice(product.grossPrice, product.currency),
     cellClassName: 'font-semibold',
   },
   {

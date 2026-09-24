@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import chunk from 'lodash/chunk';
 import type { z } from 'zod';
 import { create } from 'zustand';
 
@@ -24,10 +24,10 @@ type ProductsState = {
   addProduct: (input: ProductSchema) => Product;
 };
 
-export const useProductsStore = create<ProductsState>()((set, get) => ({
+export const useProductsStore = create<ProductsState>()((set) => ({
   products: MOCK_PRODUCTS,
-  productsPages: _.chunk(MOCK_PRODUCTS, PRODUCTS_PER_PAGE),
-  
+  productsPages: chunk(MOCK_PRODUCTS, PRODUCTS_PER_PAGE),
+
   addProduct: (input) => {
     const product: Product = {
       ...input,
@@ -35,10 +35,10 @@ export const useProductsStore = create<ProductsState>()((set, get) => ({
       createdAt: new Date().toISOString(),
     };
 
-    set((state) => ({ 
-      products: [product, ...state.products],
-      productsPages: _.chunk([product, ...state.productsPages.flat()], PRODUCTS_PER_PAGE)
-    }));
+    set((state) => {
+      const products = [product, ...state.products];
+      return { products, productsPages: chunk(products, PRODUCTS_PER_PAGE) };
+    });
 
     return product;
   },

@@ -4,7 +4,6 @@ import { useSelector } from '@tanstack/react-form';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import { useQueryStates } from 'nuqs';
 import { ComponentProps, useEffect, useState } from 'react';
-import { HTMLAttributes } from 'react';
 import { toast } from 'sonner';
 
 import COPY from '@/shared/copy/add-product-dialog';
