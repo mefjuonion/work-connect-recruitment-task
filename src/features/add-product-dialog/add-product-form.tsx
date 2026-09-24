@@ -10,6 +10,7 @@ import { useAppForm } from '@/shared/hooks/use-app-form';
 import { Button } from '@/shared/ui/button';
 import { DialogFooter } from '@/shared/ui/dialog';
 import QueriedStepper, { useStepQuery } from '@/shared/ui/queried-stepper';
+import { Separator } from '@/shared/ui/separator';
 
 import {
   ADD_PRODUCT_FORM_STEPS,
@@ -71,19 +72,21 @@ const AddProductForm = () => {
   return (
     <form
       noValidate
+      className="flex min-h-0 flex-1 flex-col"
       onSubmit={(event) => {
         event.preventDefault();
         void form.handleSubmit();
       }}
     >
-      <div className="border-b p-4 w-full">
+      <div className="w-full shrink-0 p-4">
         <QueriedStepper
           steps={ADD_PRODUCT_STEPPER_STEPS}
           queryKey={ADD_PRODUCT_STEP_URL_KEY}
         />
       </div>
+      <Separator />
 
-      <div className="p-4">
+      <div className="min-h-0 flex-1 overflow-y-auto p-4">
         {currentIndex === 0 && <ProductBaseInfo form={form} fields="baseInfo" />}
         {currentIndex === 1 && <ProductPrice form={form} fields="price" />}
         {currentIndex === 2 && (
@@ -91,7 +94,7 @@ const AddProductForm = () => {
         )}
       </div>
 
-      <DialogFooter>
+      <DialogFooter className="shrink-0">
         <Button
           type="button"
           variant="outline"

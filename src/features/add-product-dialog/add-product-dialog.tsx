@@ -3,6 +3,7 @@
 import { parseAsBoolean, parseAsIndex, useQueryStates } from 'nuqs';
 
 import COPY from '@/shared/copy/add-product-dialog';
+import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import {
   Dialog,
@@ -11,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/shared/ui/dialog';
+import { Separator } from '@/shared/ui/separator';
 
 import AddProductForm from './add-product-form';
 import {
@@ -40,10 +42,19 @@ const AddProductDialog = () => {
         <Button>Open</Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-155">
+      <DialogContent
+        className={cn(
+          // < md: fullscreen sheet
+          'inset-0 flex h-dvh max-w-none translate-x-0 translate-y-0 flex-col rounded-none sm:max-w-none py-6 px-4',
+          // ≥ md: centered dialog
+          'md:inset-auto md:top-1/2 md:left-1/2 md:h-auto md:max-h-[calc(100dvh-2rem)] md:max-w-155 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-xl md:p-0'
+        )}
+      >
         <DialogHeader>
           <DialogTitle>{COPY.header}</DialogTitle>
         </DialogHeader>
+
+        <Separator />
 
         <AddProductForm />
       </DialogContent>

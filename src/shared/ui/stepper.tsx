@@ -24,14 +24,14 @@ const Stepper = (props: StepperProps) => {
           {stepIndex > 0 && (
             <Separator
               className={cn(
-                "mx-4 flex-1",
+                "mx-4 hidden flex-1 md:block",
                 currentIndex >= stepIndex && "bg-primary"
               )}
             />
           )}
           <div
             aria-current={step === props.currentStep ? "step" : undefined}
-            className="flex shrink-0 items-center gap-3"
+            className="flex min-w-0 flex-1 flex-col items-start gap-2 md:flex-none md:shrink-0 md:flex-row md:items-center md:gap-3"
           >
             <Avatar className="size-8">
               <AvatarFallback className={cn(
@@ -45,10 +45,7 @@ const Stepper = (props: StepperProps) => {
               </AvatarFallback>
             </Avatar>
             <div
-              className={cn(
-                "text-left whitespace-nowrap",
-                step !== props.currentStep && "hidden sm:block"
-              )}
+              className="text-left md:whitespace-nowrap"
             >
               <p className={cn(
                 "text-sm font-medium",
