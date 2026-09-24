@@ -1,4 +1,4 @@
-import type { Product } from '@/shared/stores/productsStore';
+import type { Product } from '@/shared/stores/products-store';
 
 export const MOCK_PRODUCTS: Product[] = [
   {

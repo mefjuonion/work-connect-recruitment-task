@@ -87,7 +87,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="dialog-header"
       className={cn(
-        "flex flex-row items-center justify-between space-y-0 border-border pt-1 pb-4 md:px-4 md:py-6",
+        "flex items-center justify-between pt-1 pb-4 md:px-4 md:py-6",
         className
       )}
       {...props}

@@ -237,7 +237,7 @@ export function CheckboxGroupField<TValue extends string>({
               <Badge variant="outline" asChild>
                 <label
                   htmlFor={id}
-                  className="cursor-pointer text-s text-muted-foreground peer-checked:bg-primary peer-checked:text-white peer-checked:border-0 peer-focus-visible:ring-[3px] peer-focus-visible:ring-ring/50 peer-aria-invalid:border-destructive"
+                  className="cursor-pointer text-muted-foreground peer-checked:bg-primary peer-checked:text-white peer-checked:border-0 peer-focus-visible:ring-[3px] peer-focus-visible:ring-ring/50 peer-aria-invalid:border-destructive"
                 >
                   {option.label}
                 </label>

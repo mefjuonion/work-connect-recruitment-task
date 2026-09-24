@@ -3,11 +3,13 @@
 import { useSelector } from '@tanstack/react-form';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import { useQueryStates } from 'nuqs';
-import { useEffect, useState } from 'react';
+import { ComponentProps, useEffect, useState } from 'react';
+import { HTMLAttributes } from 'react';
 
 import COPY from '@/shared/copy/add-product-dialog';
 import { useAppForm } from '@/shared/hooks/use-app-form';
-import { useProductsStore } from '@/shared/stores/productsStore';
+import { cn } from '@/shared/lib/utils';
+import { useProductsStore } from '@/shared/stores/products-store';
 import { Button } from '@/shared/ui/button';
 import { DialogFooter } from '@/shared/ui/dialog';
 import QueriedStepper, { useStepQuery } from '@/shared/ui/queried-stepper';
@@ -30,7 +32,11 @@ import ProductAvailability from './product-availability/product-availability';
 import ProductBaseInfo from './product-base-info/product-base-info';
 import ProductPrice from './product-price/product-price';
 
-const AddProductForm = () => {
+interface AddProductFormProps extends ComponentProps<'form'> {
+  onSuccess?: () => void;
+};
+
+const AddProductForm = ({ onSuccess, className, ...rest }: AddProductFormProps) => {
   const [query, setQuery] = useQueryStates(addProductFormSearchParams, {
     history: 'replace',
     urlKeys: addProductFormUrlKeys,
@@ -48,7 +54,7 @@ const AddProductForm = () => {
   const form = useAppForm({
     defaultValues: initialValues,
     validators: { onSubmit: ADD_PRODUCT_FORM_STEPS[currentIndex] },
-    onSubmit: async ({ value, formApi }) => {
+    onSubmit: ({ value }) => {
       if (!isLastStep) return setStep(currentIndex + 1);
 
       const firstInvalid = findFirstInvalidStep(value);
@@ -56,10 +62,7 @@ const AddProductForm = () => {
 
       const { baseInfo, price, availability } = addProductFormSchema.parse(value);
       addProduct({ ...baseInfo, ...price, ...availability });
-
-      formApi.reset();
-      void setQuery(null);
-      void setIndex(null);
+      onSuccess?.();
     },
   });
 
@@ -77,13 +80,14 @@ const AddProductForm = () => {
   return (
     <form
       noValidate
-      className="flex min-h-0 flex-1 flex-col"
+      className={cn(className, 'flex min-h-0 flex-1 flex-col')}
       onSubmit={(event) => {
         event.preventDefault();
         void form.handleSubmit();
       }}
+      {...rest}
     >
-      <div className="w-full shrink-0 py-6 md:px-4">
+      <div className="shrink-0 py-6 md:px-4">
         <QueriedStepper
           steps={ADD_PRODUCT_STEPPER_STEPS}
           queryKey={ADD_PRODUCT_STEP_URL_KEY}
@@ -107,7 +111,7 @@ const AddProductForm = () => {
           disabled={currentIndex === 0}
           onClick={() => setStep(currentIndex - 1)}
         >
-          <ArrowLeftIcon className="size-4" />
+          <ArrowLeftIcon />
           {COPY.buttonBack}
         </Button>
         <form.Subscribe selector={(state) => state.isSubmitting}>
@@ -117,7 +121,7 @@ const AddProductForm = () => {
               disabled={isSubmitting}
             >
               {isLastStep ? COPY.buttonSubmit : COPY.buttonNext}
-              {!isLastStep && <ArrowRightIcon className="size-4" />}
+              {!isLastStep && <ArrowRightIcon />}
             </Button>
           )}
         </form.Subscribe>

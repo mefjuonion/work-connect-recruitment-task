@@ -18,7 +18,7 @@ const Stepper = (props: StepperProps) => {
   const currentIndex = props.steps.indexOf(props.currentStep);
 
   return (
-    <div className="flex w-full items-center">
+    <div className="flex items-center">
       {props.steps.map((step, stepIndex) => (
         <Fragment key={step.title + stepIndex}>
           {stepIndex > 0 && (
@@ -31,9 +31,9 @@ const Stepper = (props: StepperProps) => {
           )}
           <div
             aria-current={step === props.currentStep ? "step" : undefined}
-            className="flex min-w-0 flex-1 flex-col items-start gap-2 md:flex-none md:shrink-0 md:flex-row md:items-center md:gap-3"
+            className="flex min-w-0 flex-1 flex-col items-start gap-2 md:flex-none md:flex-row md:items-center md:gap-3"
           >
-            <Avatar className="size-8">
+            <Avatar>
               <AvatarFallback className={cn(
                 "text-sm font-semibold",
                 currentIndex >= stepIndex
@@ -45,7 +45,7 @@ const Stepper = (props: StepperProps) => {
               </AvatarFallback>
             </Avatar>
             <div
-              className="text-left md:whitespace-nowrap"
+              className="md:whitespace-nowrap"
             >
               <p className={cn(
                 "text-sm font-medium",

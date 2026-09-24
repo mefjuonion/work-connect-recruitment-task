@@ -3,6 +3,7 @@ export default {
   buttonBack: 'Wstecz',
   buttonNext: 'Dalej',
   buttonSubmit: 'Zapisz produkt',
+  addProduct: 'Dodaj produkt',
   steps: {
     info: {
       title: 'Informacje',

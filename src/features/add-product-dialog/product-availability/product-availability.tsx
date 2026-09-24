@@ -97,8 +97,8 @@ const ProductAvailability = withFieldGroup({
           </group.Subscribe>
         </div>
 
-        <FieldSet className="gap-4 py-1">
-          <FieldLegend className="mb-4 text-base font-medium">
+        <FieldSet className="py-1">
+          <FieldLegend className="mb-4">
             {COPY.fields.cartLimits.label}
           </FieldLegend>
           <div className="grid gap-4 sm:grid-cols-2">

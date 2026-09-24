@@ -19,3 +19,5 @@ export const FEATURES = [
 export type Manufacturer = (typeof MANUFACTURERS)[number];
 export type Category = (typeof CATEGORIES)[number];
 export type Feature = (typeof FEATURES)[number];
+
+export const PRODUCTS_PER_PAGE = 4;
