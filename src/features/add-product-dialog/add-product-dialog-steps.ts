@@ -1,20 +1,19 @@
 import { z } from 'zod';
 
 import COPY from '@/shared/copy/add-product-dialog';
-import { StepperStep } from '@/shared/ui/stepper';
-
 import {
   type ProductAvailabilityFormValues,
   productAvailabilitySchema,
-} from './schema/product-availability';
+} from '@/shared/schemas/product-availability';
 import {
   type ProductBaseInfoFormValues,
   productBaseInfoSchema,
-} from './schema/product-base-info';
+} from '@/shared/schemas/product-base-info';
 import {
   type ProductPriceFormValues,
   productPriceSchema,
-} from './schema/product-price';
+} from '@/shared/schemas/product-price';
+import { StepperStep } from '@/shared/ui/stepper';
 
 export const ADD_PRODUCT_STEPPER_STEPS: StepperStep[] = [
   {

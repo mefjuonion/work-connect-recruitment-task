@@ -1,8 +1,7 @@
 import { parseAsArrayOf, parseAsString, parseAsStringLiteral } from 'nuqs';
 
 import { FEATURES } from '@/shared/CONSTANTS';
-
-import { productBaseInfoDefaultValues as defaults } from '../schema/product-base-info';
+import { productBaseInfoDefaultValues as defaults } from '@/shared/schemas/product-base-info';
 
 export const productBaseInfoSearchParams = {
   name: parseAsString.withDefault(defaults.name),

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 import COPY from '@/shared/copy/add-product-dialog';
 import { useAppForm } from '@/shared/hooks/use-app-form';
+import { useProductsStore } from '@/shared/stores/productsStore';
 import { Button } from '@/shared/ui/button';
 import { DialogFooter } from '@/shared/ui/dialog';
 import QueriedStepper, { useStepQuery } from '@/shared/ui/queried-stepper';
@@ -40,6 +41,8 @@ const AddProductForm = () => {
   );
   const isLastStep = currentIndex === ADD_PRODUCT_FORM_STEPS.length - 1;
 
+  const addProduct = useProductsStore((state) => state.addProduct);
+
   const [initialValues] = useState(() => queryToFormValues(query));
 
   const form = useAppForm({
@@ -51,7 +54,9 @@ const AddProductForm = () => {
       const firstInvalid = findFirstInvalidStep(value);
       if (firstInvalid !== null) return setStep(firstInvalid);
 
-      console.log(addProductFormSchema.parse(value));
+      const { baseInfo, price, availability } = addProductFormSchema.parse(value);
+      addProduct({ ...baseInfo, ...price, ...availability });
+
       formApi.reset();
       void setQuery(null);
       void setIndex(null);

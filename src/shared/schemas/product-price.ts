@@ -9,6 +9,8 @@ const price = z
   .positive({ error: COPY.validation.pricePositive })
   .multipleOf(0.01, { error: COPY.validation.priceDecimals });
 
+const toCents = (value: number) => Math.round(value * 100);
+
 export const productPriceSchema = z
   .object({
     netPrice: price,
@@ -17,10 +19,13 @@ export const productPriceSchema = z
     currency: z.enum(CURRENCIES, { error: COPY.validation.currencyInvalid }),
   })
   .refine(
+    // Compared in whole cents: a gross → net → gross round trip may be off by
+    // one cent, and float subtraction would push that just over 0.01.
     (values) =>
       Math.abs(
-        calculateGrossPrice(values.netPrice, values.vatRate) - values.grossPrice
-      ) <= 0.01 + Number.EPSILON,
+        toCents(calculateGrossPrice(values.netPrice, values.vatRate)) -
+          toCents(values.grossPrice)
+      ) <= 1,
     { error: COPY.validation.grossPriceMismatch, path: ['grossPrice'] }
   );
 

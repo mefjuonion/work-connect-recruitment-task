@@ -6,7 +6,15 @@ export type Currency = (typeof CURRENCIES)[number];
 
 export const MANUFACTURERS = ['apple', 'samsung', 'sony', 'bosch', 'xiaomi'] as const;
 export const CATEGORIES = ['computers', 'phones', 'tv', 'appliances', 'accessories'] as const;
-export const FEATURES = ['new', 'bestseller', 'eco', 'waterproof', 'wireless'] as const;
+export const FEATURES = [
+  'bluetooth',
+  'wifi',
+  'usb-c',
+  'waterproof',
+  'wireless',
+  'eco',
+  'premium',
+] as const;
 
 export type Manufacturer = (typeof MANUFACTURERS)[number];
 export type Category = (typeof CATEGORIES)[number];

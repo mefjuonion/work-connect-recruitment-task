@@ -1,6 +1,6 @@
 import { parseAsBoolean, parseAsInteger } from 'nuqs';
 
-import { productAvailabilityDefaultValues as defaults } from '../schema/product-availability';
+import { productAvailabilityDefaultValues as defaults } from '@/shared/schemas/product-availability';
 
 export const productAvailabilitySearchParams = {
   isAvailable: parseAsBoolean.withDefault(defaults.isAvailable),

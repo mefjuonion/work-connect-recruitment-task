@@ -1,7 +1,7 @@
 import COPY from '@/shared/copy/product-base-info';
 import { withFieldGroup } from '@/shared/hooks/use-app-form';
+import { productBaseInfoDefaultValues } from '@/shared/schemas/product-base-info';
 
-import { productBaseInfoDefaultValues } from '../schema/product-base-info';
 import { CATEGORY_OPTIONS, FEATURE_OPTIONS, MANUFACTURER_OPTIONS } from './product-base-info.utils';
 
 const ProductBaseInfo = withFieldGroup({

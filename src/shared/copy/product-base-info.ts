@@ -23,11 +23,13 @@ export default {
       accessories: 'Akcesoria',
     },
     features: {
-      new: 'Nowość',
-      bestseller: 'Bestseller',
-      eco: 'Ekologiczny',
+      bluetooth: 'Bluetooth',
+      wifi: 'WiFi',
+      'usb-c': 'USB-C',
       waterproof: 'Wodoodporny',
       wireless: 'Bezprzewodowy',
+      eco: 'Ekologiczny',
+      premium: 'Premium',
     },
   },
   validation: {

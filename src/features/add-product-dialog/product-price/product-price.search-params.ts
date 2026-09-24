@@ -1,8 +1,7 @@
 import { parseAsFloat, parseAsNumberLiteral, parseAsStringLiteral } from 'nuqs';
 
 import { CURRENCIES, VAT_RATES } from '@/shared/CONSTANTS';
-
-import { productPriceDefaultValues as defaults } from '../schema/product-price';
+import { productPriceDefaultValues as defaults } from '@/shared/schemas/product-price';
 
 export const productPriceSearchParams = {
   netPrice: parseAsFloat.withDefault(defaults.netPrice),

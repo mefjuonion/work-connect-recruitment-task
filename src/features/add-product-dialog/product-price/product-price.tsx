@@ -4,8 +4,8 @@ import {
   calculateGrossPrice,
   calculateNetPrice,
 } from '@/shared/lib/currencyUtils';
+import { productPriceDefaultValues } from '@/shared/schemas/product-price';
 
-import { productPriceDefaultValues } from '../schema/product-price';
 import * as UTILS from './product-price.utils';
 
 const ProductPrice = withFieldGroup({

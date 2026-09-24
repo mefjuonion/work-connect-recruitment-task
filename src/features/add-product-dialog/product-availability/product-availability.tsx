@@ -1,5 +1,6 @@
 import COPY from '@/shared/copy/product-availability';
 import { withFieldGroup } from '@/shared/hooks/use-app-form';
+import { productAvailabilityDefaultValues } from '@/shared/schemas/product-availability';
 import { Checkbox } from '@/shared/ui/checkbox';
 import {
   Field,
@@ -11,8 +12,6 @@ import {
 import { Input } from '@/shared/ui/input';
 import { Separator } from '@/shared/ui/separator';
 import { Switch } from '@/shared/ui/switch';
-
-import { productAvailabilityDefaultValues } from '../schema/product-availability';
 
 const toNumberOrNull = (value: string) => (value === '' ? null : Number(value));
 
