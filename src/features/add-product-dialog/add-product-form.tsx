@@ -5,6 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import { useQueryStates } from 'nuqs';
 import { ComponentProps, useEffect, useState } from 'react';
 import { HTMLAttributes } from 'react';
+import { toast } from 'sonner';
 
 import COPY from '@/shared/copy/add-product-dialog';
 import { useAppForm } from '@/shared/hooks/use-app-form';
@@ -63,6 +64,8 @@ const AddProductForm = ({ onSuccess, className, ...rest }: AddProductFormProps) 
       const { baseInfo, price, availability } = addProductFormSchema.parse(value);
       addProduct({ ...baseInfo, ...price, ...availability });
       onSuccess?.();
+
+      toast.success(COPY.responseSuccess);
     },
   });
 

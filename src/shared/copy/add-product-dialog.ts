@@ -4,6 +4,10 @@ export default {
   buttonNext: 'Dalej',
   buttonSubmit: 'Zapisz produkt',
   addProduct: 'Dodaj produkt',
+
+  responseSuccess: 'Produkt został dodany',
+  responseFailure: 'Nie udało się dodać produktu',
+
   steps: {
     info: {
       title: 'Informacje',
