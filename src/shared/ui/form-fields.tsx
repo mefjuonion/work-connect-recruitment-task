@@ -74,6 +74,7 @@ export function TextareaField({
       <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
       <Textarea
         id={field.name}
+        className="resize-none"
         placeholder={placeholder}
         value={field.state.value}
         aria-invalid={isInvalid}

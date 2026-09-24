@@ -45,7 +45,7 @@ const AddProductDialog = () => {
       <DialogContent
         className={cn(
           // < md: fullscreen sheet
-          'inset-0 flex h-dvh max-w-none translate-x-0 translate-y-0 flex-col rounded-none sm:max-w-none py-6 px-4',
+          'inset-0 flex h-dvh max-w-none translate-x-0 translate-y-0 flex-col rounded-none sm:max-w-none px-4 pt-6 pb-0',
           // ≥ md: centered dialog
           'md:inset-auto md:top-1/2 md:left-1/2 md:h-auto md:max-h-[calc(100dvh-2rem)] md:max-w-155 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-xl md:p-0'
         )}
