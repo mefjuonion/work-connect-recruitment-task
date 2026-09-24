@@ -122,6 +122,7 @@ const AddProductForm = ({ onSuccess, className, ...rest }: AddProductFormProps) 
             <Button
               type="submit"
               disabled={isSubmitting}
+              size="lg"
             >
               {isLastStep ? COPY.buttonSubmit : COPY.buttonNext}
               {!isLastStep && <ArrowRightIcon />}

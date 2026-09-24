@@ -40,7 +40,7 @@ const AddProductDialog = () => {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button size="lg" className="px-4">
+        <Button size="lg">
           <Plus />
           {COPY.addProduct}
         </Button>
